@@ -6,7 +6,6 @@ import org.uma.jmetal.operator.selection.impl.NaryRandomSelection;
 import org.uma.jmetal.solution.Solution;
 import org.uma.jmetal.util.checking.Check;
 import org.uma.jmetal.util.neighborhood.Neighborhood;
-import org.uma.jmetal.util.pseudorandom.JMetalRandom;
 import org.uma.jmetal.util.sequencegenerator.SequenceGenerator;
 
 import java.util.ArrayList;
@@ -26,8 +25,6 @@ public class NeighborhoodMatingPoolSelection<S extends Solution<?>>
 
   private SequenceGenerator<Integer> solutionIndexGenerator;
   private Neighborhood<S> neighborhood;
-
-  private boolean selectCurrentSolution;
 
   public NeighborhoodMatingPoolSelection(
       int matingPoolSize,

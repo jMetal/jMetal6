@@ -47,7 +47,6 @@ public class StudyVisualizer {
   private static final String ALGORITHM = "Algorithm";
   private static final String PROBLEM = "Problem";
   private static final String INDICATOR_NAME = "IndicatorName";
-  private static final String EXECUTION_ID = "ExecutionId";
   private static final String INDICATOR_VALUE = "IndicatorValue";
   private String folderPath;
   private Table table;
