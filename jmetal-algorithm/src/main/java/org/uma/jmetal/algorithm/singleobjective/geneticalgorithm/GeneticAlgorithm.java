@@ -27,7 +27,7 @@ import java.util.HashMap;
  *
  * @author Antonio J. Nebro
  * */
-
+@SuppressWarnings("serial")
 public class GeneticAlgorithm<S extends Solution<?>> extends ComponentBasedEvolutionaryAlgorithm<S> {
 
   /**

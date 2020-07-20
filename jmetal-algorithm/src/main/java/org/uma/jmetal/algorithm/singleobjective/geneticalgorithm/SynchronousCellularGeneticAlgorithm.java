@@ -29,6 +29,7 @@ import java.util.HashMap;
  *
  * @author Antonio J. Nebro
  */
+@SuppressWarnings("serial")
 public class SynchronousCellularGeneticAlgorithm<S extends Solution<?>>
     extends ComponentBasedEvolutionaryAlgorithm<S> {
 
