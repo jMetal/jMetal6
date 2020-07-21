@@ -7,7 +7,6 @@ import org.uma.jmetal.operator.crossover.CrossoverOperator;
 import org.uma.jmetal.operator.crossover.impl.PMXCrossover;
 import org.uma.jmetal.operator.mutation.MutationOperator;
 import org.uma.jmetal.operator.mutation.impl.PermutationSwapMutation;
-import org.uma.jmetal.operator.selection.SelectionOperator;
 import org.uma.jmetal.problem.multiobjective.MultiobjectiveTSP;
 import org.uma.jmetal.problem.permutationproblem.PermutationProblem;
 import org.uma.jmetal.solution.permutationsolution.PermutationSolution;
@@ -35,7 +34,6 @@ public class NSGAIITSPExample extends AbstractAlgorithmRunner {
     NSGAII<PermutationSolution<Integer>> algorithm;
     CrossoverOperator<PermutationSolution<Integer>> crossover;
     MutationOperator<PermutationSolution<Integer>> mutation;
-    SelectionOperator<List<PermutationSolution<Integer>>, PermutationSolution<Integer>> selection;
 
     problem =
         new MultiobjectiveTSP(
