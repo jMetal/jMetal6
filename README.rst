@@ -8,13 +8,11 @@ jMetal 6 project Web site
    :alt: Documentation Status
    :target: https://jmetal.readthedocs.io/?badge=latest
 
-jMetal is a Java-based framework for multi-objective optimization with metaheuristics. The current stable version is 5.8 (https://github.com/jMetal/jMetal/tree/jmetal-5.8), which is based on the description of jMetal 5 included in the paper "Redesigning the jMetal Multi-Objective Optimization Framework" (http://dx.doi.org/10.1145/2739482.2768462), presented at GECCO 2015.
+jMetal is a Java-based framework for multi-objective optimization with metaheuristics. The current stable version is 5.10 (https://github.com/jMetal/jMetal/tree/jmetal-5.10), which is based on the description of jMetal 5 included in the paper "Redesigning the jMetal Multi-Objective Optimization Framework" (http://dx.doi.org/10.1145/2739482.2768462), presented at GECCO 2015.
 
-After five years working with jMetal 5, a new major release, jMetal 6, intended to explore new ideas, is located here as jMetal 6.0-SNAPSHOT. jMetal 5 will still be an active project in https://github.com/jMetal/jMetal.
+After five years working with jMetal 5, a new major release, jMetal 6, intended to explore new ideas, is located here as jMetal 6.0-SNAPSHOT. jMetal 5 will continue as an active project in https://github.com/jMetal/jMetal.
 
 A summary of the features of jMetal 6.0 are listed next:
-
-* jMetal 6 requires Java 11. 
 
 * The default format for files containing fronts (including the reference Pareto fronts) is CSV.
 
@@ -49,7 +47,7 @@ jMetal 6 is implemented in Java 11 and it is a Maven project structured in six s
 | jmetal-auto      |  Auto configuration               |
 +------------------+-----------------------------------+
 
-All the code included in jMetal 5.8 is included in jMetal 6.0-SNAPSHOT, so the project is fully functional and we are currently using it in our research work. 
+All the code included in jMetal 5.10 is included in jMetal 6.0-SNAPSHOT, so the project is fully functional and we are currently using it in our research work. 
 
 Comments and suggestions are very welcome.
 
