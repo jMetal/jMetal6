@@ -1,6 +1,5 @@
 package org.uma.jmetal.example.singleobjective.cellulargeneticalgorithm;
 
-import org.uma.jmetal.algorithm.singleobjective.geneticalgorithm.GeneticAlgorithm;
 import org.uma.jmetal.algorithm.singleobjective.geneticalgorithm.SynchronousCellularGeneticAlgorithm;
 import org.uma.jmetal.component.termination.Termination;
 import org.uma.jmetal.component.termination.impl.TerminationByEvaluations;
@@ -8,14 +7,12 @@ import org.uma.jmetal.operator.crossover.CrossoverOperator;
 import org.uma.jmetal.operator.crossover.impl.SBXCrossover;
 import org.uma.jmetal.operator.mutation.MutationOperator;
 import org.uma.jmetal.operator.mutation.impl.PolynomialMutation;
-import org.uma.jmetal.operator.selection.impl.NaryTournamentSelection;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.problem.singleobjective.Sphere;
 import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.util.AbstractAlgorithmRunner;
 import org.uma.jmetal.util.JMetalException;
 import org.uma.jmetal.util.JMetalLogger;
-import org.uma.jmetal.util.comparator.ObjectiveComparator;
 import org.uma.jmetal.util.fileoutput.SolutionListOutput;
 import org.uma.jmetal.util.fileoutput.impl.DefaultFileOutputContext;
 import org.uma.jmetal.util.neighborhood.impl.C9;
@@ -32,7 +29,6 @@ public class SynchronousCellularGeneticAlgorithmExample extends AbstractAlgorith
   public static void main(String[] args) throws JMetalException {
     Problem<DoubleSolution> problem;
     SynchronousCellularGeneticAlgorithm<DoubleSolution> algorithm;
-    NaryTournamentSelection<DoubleSolution> selection ;
     CrossoverOperator<DoubleSolution> crossover;
     MutationOperator<DoubleSolution> mutation;
     
