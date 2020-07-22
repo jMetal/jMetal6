@@ -2,9 +2,9 @@ package org.uma.jmetal.auto.parameter.catalogue;
 
 import org.uma.jmetal.auto.parameter.CategoricalParameter;
 import org.uma.jmetal.auto.parameter.Parameter;
-import org.uma.jmetal.component.densityestimator.DensityEstimator;
-import org.uma.jmetal.component.densityestimator.impl.CrowdingDistanceDensityEstimator;
-import org.uma.jmetal.component.densityestimator.impl.KnnDensityEstimator;
+import org.uma.jmetal.component.catalogue.densityestimator.CrowdingDistanceDensityEstimator;
+import org.uma.jmetal.component.catalogue.densityestimator.DensityEstimator;
+import org.uma.jmetal.component.catalogue.densityestimator.KnnDensityEstimator;
 import org.uma.jmetal.solution.Solution;
 
 import java.util.List;

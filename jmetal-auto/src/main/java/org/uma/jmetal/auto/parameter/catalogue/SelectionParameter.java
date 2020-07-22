@@ -1,13 +1,13 @@
 package org.uma.jmetal.auto.parameter.catalogue;
 
 import org.uma.jmetal.auto.parameter.CategoricalParameter;
-import org.uma.jmetal.component.densityestimator.DensityEstimator;
-import org.uma.jmetal.component.densityestimator.impl.CrowdingDistanceDensityEstimator;
-import org.uma.jmetal.component.ranking.Ranking;
-import org.uma.jmetal.component.ranking.impl.FastNonDominatedSortRanking;
-import org.uma.jmetal.component.selection.MatingPoolSelection;
-import org.uma.jmetal.component.selection.impl.NaryTournamentMatingPoolSelection;
-import org.uma.jmetal.component.selection.impl.RandomMatingPoolSelection;
+import org.uma.jmetal.component.catalogue.densityestimator.CrowdingDistanceDensityEstimator;
+import org.uma.jmetal.component.catalogue.densityestimator.DensityEstimator;
+import org.uma.jmetal.component.catalogue.ranking.Ranking;
+import org.uma.jmetal.component.catalogue.ranking.impl.FastNonDominatedSortRanking;
+import org.uma.jmetal.component.catalogue.selection.MatingPoolSelection;
+import org.uma.jmetal.component.catalogue.selection.impl.NaryTournamentMatingPoolSelection;
+import org.uma.jmetal.component.catalogue.selection.impl.RandomMatingPoolSelection;
 import org.uma.jmetal.solution.Solution;
 import org.uma.jmetal.util.comparator.MultiComparator;
 

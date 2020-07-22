@@ -1,12 +1,12 @@
 package org.uma.jmetal.auto.algorithm;
 
 import org.uma.jmetal.algorithm.Algorithm;
-import org.uma.jmetal.component.evaluation.Evaluation;
-import org.uma.jmetal.component.initialsolutioncreation.InitialSolutionsCreation;
-import org.uma.jmetal.component.replacement.Replacement;
-import org.uma.jmetal.component.selection.MatingPoolSelection;
-import org.uma.jmetal.component.termination.Termination;
-import org.uma.jmetal.component.variation.Variation;
+import org.uma.jmetal.component.catalogue.evaluation.Evaluation;
+import org.uma.jmetal.component.catalogue.initialsolutioncreation.InitialSolutionsCreation;
+import org.uma.jmetal.component.catalogue.replacement.Replacement;
+import org.uma.jmetal.component.catalogue.selection.MatingPoolSelection;
+import org.uma.jmetal.component.catalogue.termination.Termination;
+import org.uma.jmetal.component.catalogue.variation.Variation;
 import org.uma.jmetal.solution.Solution;
 import org.uma.jmetal.util.archive.Archive;
 import org.uma.jmetal.util.observable.Observable;

@@ -1,39 +1,10 @@
 package org.uma.jmetal.example.multiobjective.ensemble;
 
-import org.uma.jmetal.algorithm.Algorithm;
-import org.uma.jmetal.algorithm.multiobjective.ensemble.AlgorithmEnsemble;
-import org.uma.jmetal.algorithm.multiobjective.moead.MOEADDE;
-import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAII;
-import org.uma.jmetal.algorithm.multiobjective.smpso.SMPSOWithArchive;
-import org.uma.jmetal.component.evaluation.Evaluation;
-import org.uma.jmetal.component.evaluation.impl.SequentialEvaluation;
-import org.uma.jmetal.component.termination.Termination;
-import org.uma.jmetal.component.termination.impl.TerminationByEvaluations;
-import org.uma.jmetal.operator.crossover.impl.SBXCrossover;
-import org.uma.jmetal.operator.mutation.impl.PolynomialMutation;
-import org.uma.jmetal.problem.doubleproblem.DoubleProblem;
-import org.uma.jmetal.problem.multiobjective.maf.MaF01;
-import org.uma.jmetal.solution.doublesolution.DoubleSolution;
 import org.uma.jmetal.util.AbstractAlgorithmRunner;
-import org.uma.jmetal.util.JMetalLogger;
-import org.uma.jmetal.util.SolutionListUtils;
-import org.uma.jmetal.util.aggregativefunction.AggregativeFunction;
-import org.uma.jmetal.util.aggregativefunction.impl.Tschebyscheff;
-import org.uma.jmetal.util.archive.Archive;
-import org.uma.jmetal.util.archive.BoundedArchive;
-import org.uma.jmetal.util.archive.impl.CrowdingDistanceArchive;
-import org.uma.jmetal.util.archive.impl.NonDominatedSolutionListArchive;
-import org.uma.jmetal.util.fileoutput.SolutionListOutput;
-import org.uma.jmetal.util.fileoutput.impl.DefaultFileOutputContext;
-import org.uma.jmetal.util.pseudorandom.JMetalRandom;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /** @author Antonio J. Nebro <antonio@lcc.uma.es> */
 public class Ensemble3DNSGAIISMPSOMOEAD extends AbstractAlgorithmRunner {
-
+/*
   public static void main(String[] args) throws Exception {
     DoubleProblem problem;
 
@@ -147,4 +118,6 @@ public class Ensemble3DNSGAIISMPSOMOEAD extends AbstractAlgorithmRunner {
       printQualityIndicators(population, referenceParetoFront);
     }
   }
+
+ */
 }

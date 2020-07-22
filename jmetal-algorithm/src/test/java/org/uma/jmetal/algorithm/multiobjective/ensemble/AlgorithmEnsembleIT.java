@@ -2,13 +2,11 @@ package org.uma.jmetal.algorithm.multiobjective.ensemble;
 
 import org.junit.Test;
 import org.uma.jmetal.algorithm.Algorithm;
-import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAII;
-import org.uma.jmetal.algorithm.multiobjective.smpso.SMPSO;
-import org.uma.jmetal.component.evaluation.Evaluation;
-import org.uma.jmetal.component.evaluation.impl.SequentialEvaluation;
-import org.uma.jmetal.component.termination.Termination;
-import org.uma.jmetal.component.termination.impl.TerminationByEvaluations;
+import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAIIBuilder;
+import org.uma.jmetal.algorithm.multiobjective.smpso.SMPSOBuilder;
+import org.uma.jmetal.operator.crossover.CrossoverOperator;
 import org.uma.jmetal.operator.crossover.impl.SBXCrossover;
+import org.uma.jmetal.operator.mutation.MutationOperator;
 import org.uma.jmetal.operator.mutation.impl.PolynomialMutation;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.problem.doubleproblem.DoubleProblem;
@@ -50,25 +48,22 @@ public class AlgorithmEnsembleIT {
   @Test
   public void shouldConstructorCreateAValidAlgorithmListWithOneAlgorithm() {
     Problem<DoubleSolution> problem = new ZDT1();
-    double crossoverProbability = 0.9;
-    double crossoverDistributionIndex = 20.0;
-
-    double mutationProbability = 1.0 / problem.getNumberOfVariables();
-    double mutationDistributionIndex = 20.0;
+    CrossoverOperator<DoubleSolution> crossover;
+    MutationOperator<DoubleSolution> mutation;
 
     int populationSize = 240;
     int offspringPopulationSize = populationSize;
 
-    Termination termination = new TerminationByEvaluations(20000);
+    double crossoverProbability = 0.9;
+    double crossoverDistributionIndex = 20.0;
+    crossover = new SBXCrossover(crossoverProbability, crossoverDistributionIndex);
+
+    double mutationProbability = 1.0 / problem.getNumberOfVariables();
+    double mutationDistributionIndex = 20.0;
+    mutation = new PolynomialMutation(mutationProbability, mutationDistributionIndex);
 
     Algorithm<List<DoubleSolution>> algorithm =
-        new NSGAII<>(
-            problem,
-            populationSize,
-            offspringPopulationSize,
-            new SBXCrossover(crossoverProbability, crossoverDistributionIndex),
-            new PolynomialMutation(mutationProbability, mutationDistributionIndex),
-            termination);
+        new NSGAIIBuilder<DoubleSolution>(problem, crossover, mutation, populationSize).build();
 
     List<Algorithm<List<DoubleSolution>>> algorithmList = new ArrayList<>();
     algorithmList.add(algorithm);
@@ -82,28 +77,25 @@ public class AlgorithmEnsembleIT {
   @Test
   public void shouldEnsembleWithOneAlgorithmReturnAValidResult() {
     Problem<DoubleSolution> problem = new ZDT1();
+    CrossoverOperator<DoubleSolution> crossover;
+    MutationOperator<DoubleSolution> mutation;
+
+    int populationSize = 240;
+    int offspringPopulationSize = populationSize;
+
     double crossoverProbability = 0.9;
     double crossoverDistributionIndex = 20.0;
+    crossover = new SBXCrossover(crossoverProbability, crossoverDistributionIndex);
 
     double mutationProbability = 1.0 / problem.getNumberOfVariables();
     double mutationDistributionIndex = 20.0;
+    mutation = new PolynomialMutation(mutationProbability, mutationDistributionIndex);
 
-    int populationSize = 100;
-    int offspringPopulationSize = populationSize;
-
-    Termination termination = new TerminationByEvaluations(20000);
-
-    Algorithm<List<DoubleSolution>> nsgaII =
-        new NSGAII<>(
-            problem,
-            populationSize,
-            offspringPopulationSize,
-            new SBXCrossover(crossoverProbability, crossoverDistributionIndex),
-            new PolynomialMutation(mutationProbability, mutationDistributionIndex),
-            termination);
+    Algorithm<List<DoubleSolution>> nsgaii =
+        new NSGAIIBuilder<DoubleSolution>(problem, crossover, mutation, populationSize).build();
 
     List<Algorithm<List<DoubleSolution>>> algorithmList = new ArrayList<>();
-    algorithmList.add(nsgaII);
+    algorithmList.add(nsgaii);
 
     AlgorithmEnsemble<DoubleSolution> algorithmEnsemble =
         new AlgorithmEnsemble<>(algorithmList, new NonDominatedSolutionListArchive<>());
@@ -112,47 +104,36 @@ public class AlgorithmEnsembleIT {
 
     assertTrue(algorithmEnsemble.getResult().size() >= (populationSize - 5));
     for (DoubleSolution solution : algorithmEnsemble.getResult()) {
-      assertEquals(nsgaII.getName(), solution.getAttribute("ALGORITHM_NAME"));
+      assertEquals(nsgaii.getName(), solution.getAttribute("ALGORITHM_NAME"));
     }
   }
 
   @Test
   public void shouldEnsembleWithTwoAlgorithmsReturnAValidResult() {
     Problem<DoubleSolution> problem = new ZDT1();
+    CrossoverOperator<DoubleSolution> crossover;
+    MutationOperator<DoubleSolution> mutation;
+
+    int populationSize = 240;
+    int offspringPopulationSize = populationSize;
+
     double crossoverProbability = 0.9;
     double crossoverDistributionIndex = 20.0;
+    crossover = new SBXCrossover(crossoverProbability, crossoverDistributionIndex);
 
     double mutationProbability = 1.0 / problem.getNumberOfVariables();
     double mutationDistributionIndex = 20.0;
-
-    int populationSize = 100;
-    int offspringPopulationSize = populationSize;
-
-    Termination termination = new TerminationByEvaluations(20000);
+    mutation = new PolynomialMutation(mutationProbability, mutationDistributionIndex);
 
     Algorithm<List<DoubleSolution>> nsgaII =
-        new NSGAII<>(
-            problem,
-            populationSize,
-            offspringPopulationSize,
-            new SBXCrossover(crossoverProbability, crossoverDistributionIndex),
-            new PolynomialMutation(mutationProbability, mutationDistributionIndex),
-            termination);
+        new NSGAIIBuilder<DoubleSolution>(problem, crossover, mutation, populationSize).build();
 
     int swarmSize = 100;
     BoundedArchive<DoubleSolution> leadersArchive =
         new CrowdingDistanceArchive<DoubleSolution>(swarmSize);
 
-    Evaluation<DoubleSolution> evaluation = new SequentialEvaluation<>(problem);
-
     Algorithm<List<DoubleSolution>> smpso =
-        new SMPSO(
-            (DoubleProblem) problem,
-            swarmSize,
-            leadersArchive,
-            new PolynomialMutation(mutationProbability, mutationDistributionIndex),
-            evaluation,
-            termination);
+        new SMPSOBuilder((DoubleProblem) problem, leadersArchive).build();
 
     List<Algorithm<List<DoubleSolution>>> algorithmList = new ArrayList<>();
     algorithmList.add(nsgaII);
