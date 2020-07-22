@@ -58,4 +58,8 @@ public class NaryTournamentSelection<S extends Solution<?>>
 
     return result;
   }
+
+  public int getTournamentSize() {
+    return tournamentSize ;
+  }
 }
