@@ -12,7 +12,7 @@ jMetal is a Java-based framework for multi-objective optimization with metaheuri
 
 To explore new ideas that could be further included in the framework, we have created this jMetal 6 project. 
 
-A summary of the features of jMetal 6.0 are listed next:
+A summary of the features of jMetal 6 are listed next:
 
 * The default format for files containing fronts (including the reference Pareto fronts) is CSV.
 
