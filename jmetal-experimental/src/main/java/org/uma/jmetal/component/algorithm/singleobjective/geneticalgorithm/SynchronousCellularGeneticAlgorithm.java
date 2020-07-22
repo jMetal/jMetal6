@@ -89,7 +89,8 @@ public class SynchronousCellularGeneticAlgorithm<S extends Solution<?>>
             variation.getMatingPoolSize(),
             solutionIndexGenerator,
             neighborhood,
-            new NaryTournamentSelection<>(2, new ObjectiveComparator<>(0)));
+            new NaryTournamentSelection<>(2, new ObjectiveComparator<>(0)),
+            true);
 
     this.termination = termination;
 

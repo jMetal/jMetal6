@@ -6,7 +6,7 @@ import org.uma.jmetal.component.catalogue.evaluation.SequentialEvaluation;
 import org.uma.jmetal.component.catalogue.initialsolutioncreation.InitialSolutionsCreation;
 import org.uma.jmetal.component.catalogue.initialsolutioncreation.impl.RandomSolutionsCreation;
 import org.uma.jmetal.component.catalogue.replacement.Replacement;
-import org.uma.jmetal.component.catalogue.replacement.impl.PairwiseReplacement;
+import org.uma.jmetal.component.catalogue.replacement.impl.SingleSolutionReplacement;
 import org.uma.jmetal.component.catalogue.selection.MatingPoolSelection;
 import org.uma.jmetal.component.catalogue.selection.impl.NeighborhoodMatingPoolSelection;
 import org.uma.jmetal.component.catalogue.termination.Termination;
@@ -79,17 +79,18 @@ public class AsynchronousCellularGeneticAlgorithm<S extends Solution<?>>
 
     this.createInitialPopulation = new RandomSolutionsCreation<>(problem, populationSize);
 
-    this.replacement = new PairwiseReplacement<>(new ObjectiveComparator<>(0));
+    this.replacement =
+        new SingleSolutionReplacement<>(solutionIndexGenerator, new ObjectiveComparator<>(0));
 
-    this.variation =
-        new CrossoverAndMutationVariation<>(1, crossoverOperator, mutationOperator);
+    this.variation = new CrossoverAndMutationVariation<>(1, crossoverOperator, mutationOperator);
 
     this.selection =
         new NeighborhoodMatingPoolSelection<>(
             variation.getMatingPoolSize(),
             solutionIndexGenerator,
             neighborhood,
-            new NaryTournamentSelection<>(2, new ObjectiveComparator<>(0)));
+            new NaryTournamentSelection<>(2, new ObjectiveComparator<>(0)),
+            false);
 
     this.termination = termination;
 

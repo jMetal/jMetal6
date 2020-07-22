@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class allows to select N different solutions that can be taken from a solution list (i.e,
- * population or swarm) or from a neighborhood according to a given probability.
+ * This class produces a mating pool composed of solutions belonging to a neighborhood. The neighborhood is associated
+ * to a particular solution, which is determined by its position in the population as indicated by a
+ * {@link SequenceGenerator} object.
  *
  * @author Antonio J. Nebro
  * @param <S> Type of the solutions
@@ -21,6 +22,7 @@ public class NeighborhoodMatingPoolSelection<S extends Solution<?>>
     implements MatingPoolSelection<S> {
   private SelectionOperator<List<S>, S> selectionOperator;
   private int matingPoolSize;
+  private boolean updateCurrentSolutionIndex ;
 
   private SequenceGenerator<Integer> solutionIndexGenerator;
   private Neighborhood<S> neighborhood;
@@ -28,11 +30,13 @@ public class NeighborhoodMatingPoolSelection<S extends Solution<?>>
   public NeighborhoodMatingPoolSelection(
       int matingPoolSize,
       SequenceGenerator<Integer> solutionIndexGenerator,
-      Neighborhood<S> neighborhood, SelectionOperator<List<S>, S> selectionOperator) {
+      Neighborhood<S> neighborhood,
+      SelectionOperator<List<S>, S> selectionOperator, boolean updateCurrentSolutionIndex) {
     this.matingPoolSize = matingPoolSize;
     this.solutionIndexGenerator = solutionIndexGenerator;
     this.neighborhood = neighborhood;
     this.selectionOperator = selectionOperator ;
+    this.updateCurrentSolutionIndex = updateCurrentSolutionIndex ;
   }
 
   public List<S> select(List<S> solutionList) {
@@ -42,7 +46,10 @@ public class NeighborhoodMatingPoolSelection<S extends Solution<?>>
       matingPool.add(
           selectionOperator.execute(
               neighborhood.getNeighbors(solutionList, solutionIndexGenerator.getValue())));
-      solutionIndexGenerator.generateNext();
+
+      if (updateCurrentSolutionIndex) {
+        solutionIndexGenerator.generateNext();
+      }
     }
 
     Check.that(
