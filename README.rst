@@ -10,9 +10,15 @@ jMetal 6 project Web site
 
 jMetal is a Java-based framework for multi-objective optimization with metaheuristics. The current stable version is 5.10 (https://github.com/jMetal/jMetal/tree/jmetal-5.10), which is based on the description of jMetal 5 included in the paper "Redesigning the jMetal Multi-Objective Optimization Framework" (http://dx.doi.org/10.1145/2739482.2768462), presented at GECCO 2015.
 
+<<<<<<< HEAD
 After five years working with jMetal 5, a new major release, jMetal 6, intended to explore new ideas, is located here as jMetal 6.0-SNAPSHOT. jMetal 5 will continue as an active project in https://github.com/jMetal/jMetal.
 
 A summary of the features of jMetal 6.0 are listed next:
+=======
+To explore new ideas that could be further included in the framework, we have created this jMetal 6 project. 
+
+A summary of the features of jMetal 6 are listed next:
+>>>>>>> 52e40547b3e09ae83f0baf52ece17a282cf3881b
 
 * The default format for files containing fronts (including the reference Pareto fronts) is CSV.
 
@@ -24,7 +30,7 @@ A summary of the features of jMetal 6.0 are listed next:
 
 * All the core packages in ``jmetal-core`` (``solution``, ``problem``, ``algorithm``, ``operator``, ``quality indicator``), are being revised, tested, and refactored. The same applies to the ``jmetal-core/util`` package.
 
-* The implementation of the algorithms in ``jmetal-algorithm`` will be revised. 
+* The implementation of some algorithms in ``jmetal-algorithm`` will be revised. 
 
 jMetal 6 is implemented in Java 11 and it is a Maven project structured in six sub-projects:
 
