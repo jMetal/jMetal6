@@ -5,7 +5,6 @@ import org.uma.jmetal.auto.parameter.IntegerParameter;
 import org.uma.jmetal.auto.parameter.Parameter;
 import org.uma.jmetal.auto.parameter.RealParameter;
 import org.uma.jmetal.auto.parameter.catalogue.*;
-
 import org.uma.jmetal.component.catalogue.densityestimator.CrowdingDistanceDensityEstimator;
 import org.uma.jmetal.component.catalogue.densityestimator.DensityEstimator;
 import org.uma.jmetal.component.catalogue.evaluation.Evaluation;
