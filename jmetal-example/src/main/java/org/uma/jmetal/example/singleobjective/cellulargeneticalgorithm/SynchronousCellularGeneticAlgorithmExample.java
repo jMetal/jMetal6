@@ -15,6 +15,7 @@ import org.uma.jmetal.util.JMetalException;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.fileoutput.SolutionListOutput;
 import org.uma.jmetal.util.fileoutput.impl.DefaultFileOutputContext;
+import org.uma.jmetal.util.neighborhood.Neighborhood;
 import org.uma.jmetal.util.neighborhood.impl.C9;
 import org.uma.jmetal.util.pseudorandom.JMetalRandom;
 
@@ -36,6 +37,8 @@ public class SynchronousCellularGeneticAlgorithmExample extends AbstractAlgorith
 
     int rows = 10 ;
     int columns = 10 ;
+    Neighborhood<DoubleSolution> neighborhood = new C9<>(rows, columns) ;
+
     int populationSize = rows * columns ;
 
     double crossoverProbability = 0.9;
@@ -52,7 +55,7 @@ public class SynchronousCellularGeneticAlgorithmExample extends AbstractAlgorith
             new SynchronousCellularGeneticAlgorithm<>(
                     problem,
                     populationSize,
-                    new C9<>(rows, columns),
+                    neighborhood,
                     crossover,
                     mutation,
                     termination);

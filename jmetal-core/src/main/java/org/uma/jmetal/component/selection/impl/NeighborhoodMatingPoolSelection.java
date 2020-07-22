@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class NeighborhoodMatingPoolSelection<S extends Solution<?>>
     implements MatingPoolSelection<S> {
-  private SelectionOperator<List<S>, List<S>> selectionOperator;
+  private SelectionOperator<List<S>, S> selectionOperator;
   private int matingPoolSize;
 
   private SequenceGenerator<Integer> solutionIndexGenerator;
@@ -29,21 +29,21 @@ public class NeighborhoodMatingPoolSelection<S extends Solution<?>>
   public NeighborhoodMatingPoolSelection(
       int matingPoolSize,
       SequenceGenerator<Integer> solutionIndexGenerator,
-      Neighborhood<S> neighborhood) {
+      Neighborhood<S> neighborhood, SelectionOperator<List<S>, S> selectionOperator) {
     this.matingPoolSize = matingPoolSize;
     this.solutionIndexGenerator = solutionIndexGenerator;
     this.neighborhood = neighborhood;
-
-    selectionOperator = new NaryRandomSelection<>(2);
+    this.selectionOperator = selectionOperator ;
   }
 
   public List<S> select(List<S> solutionList) {
     List<S> matingPool = new ArrayList<>();
 
     while (matingPool.size() < matingPoolSize) {
-      matingPool.addAll(
+      matingPool.add(
           selectionOperator.execute(
               neighborhood.getNeighbors(solutionList, solutionIndexGenerator.getValue())));
+      solutionIndexGenerator.generateNext();
     }
 
     Check.that(

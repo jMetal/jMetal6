@@ -44,7 +44,7 @@ public class SynchronousCellularGeneticAlgorithmBinaryExample extends AbstractAl
     double mutationProbability = 1.0 / problem.getTotalNumberOfBits() ;
     mutation = new BitFlipMutation(mutationProbability);
 
-    Termination termination = new TerminationByEvaluations(75000);
+    Termination termination = new TerminationByEvaluations(30000);
 
     algorithm =
             new SynchronousCellularGeneticAlgorithm<>(

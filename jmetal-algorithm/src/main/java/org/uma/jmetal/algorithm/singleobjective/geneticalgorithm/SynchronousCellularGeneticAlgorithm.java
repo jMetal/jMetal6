@@ -13,6 +13,7 @@ import org.uma.jmetal.component.termination.Termination;
 import org.uma.jmetal.component.variation.impl.CrossoverAndMutationVariation;
 import org.uma.jmetal.operator.crossover.CrossoverOperator;
 import org.uma.jmetal.operator.mutation.MutationOperator;
+import org.uma.jmetal.operator.selection.impl.NaryTournamentSelection;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.solution.Solution;
 import org.uma.jmetal.util.comparator.ObjectiveComparator;
@@ -85,7 +86,10 @@ public class SynchronousCellularGeneticAlgorithm<S extends Solution<?>>
 
     this.selection =
         new NeighborhoodMatingPoolSelection<>(
-            variation.getMatingPoolSize(), solutionIndexGenerator, neighborhood);
+            variation.getMatingPoolSize(),
+            solutionIndexGenerator,
+            neighborhood,
+            new NaryTournamentSelection<>(2, new ObjectiveComparator<>(0)));
 
     this.termination = termination;
 
